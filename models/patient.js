@@ -55,10 +55,6 @@ var patientSchema = new mongoose.Schema(
       maxlength: 15,
       trim: true,
     },
-    isblocked: {
-      type: Number,
-      default: 0,
-    },
   },
   { timestamps: true }
 );

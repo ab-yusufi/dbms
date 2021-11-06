@@ -15,12 +15,12 @@ exports.signup = async (req, res) => {
   const user = await new Patient(req.body);
   await user.save((err, user) => {
     if (err) {
-      console.log(err);
       return res.status(400).json({
         err: "NOT able to save user in DB",
       });
     }
     res.json({
+      
       name: user.name,
       email: user.email,
       id: user._id,
@@ -39,7 +39,7 @@ exports.signin = async (req, res) => {
   }
 
   await Patient.findOne({ email }, (err, user) => {
-    if (err || !user) {
+    if ( !user) {
       return res.status(400).json({
         error: "User email does not exists",
       });
