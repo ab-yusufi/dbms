@@ -39,16 +39,19 @@ var hospitalSchema = new mongoose.Schema(
       maxlength: 32,
       trim: true,
     },
+    phone: {
+      type: Number,
+      required: true,
+      maxlength: 15,
+      trim: true,
+    },
     services: [
       {
         type: ObjectId,
         ref: "Service",
       },
     ],
-    isblocked: {
-      type: Number,
-      default: 0,
-    },
+
   },
   { timestamps: true }
 );

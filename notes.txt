@@ -1,0 +1,11 @@
+controllers - logic
+models - database schema 
+routes - routes /signup, /signin etc
+
+main file index.js
+
+models: 
+  patient
+  hospital
+  service
+

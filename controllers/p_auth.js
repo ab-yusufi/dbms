@@ -20,7 +20,6 @@ exports.signup = async (req, res) => {
       });
     }
     res.json({
-      
       name: user.name,
       email: user.email,
       id: user._id,
