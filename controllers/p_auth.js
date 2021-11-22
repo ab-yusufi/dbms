@@ -37,9 +37,9 @@ exports.signin = async (req, res) => {
     });
   }
 
-  await Patient.findOne({ email }, (err, user) => {
+  await Patient.findOne({ email },  (err, user) => {
     if ( !user) {
-      return res.status(400).json({
+      return  res.status(400).json({
         error: "User email does not exists",
       });
     }
@@ -77,7 +77,7 @@ exports.isSignedIn = expressJwt({
 
 //custom middlewares
 exports.isAuthenticated = (req, res, next) => {
-  let checker = req.profile && req.auth && req.profile._id == req.auth._id;
+  let checker = req.patient && req.auth && req.patient._id == req.auth._id;
   if (!checker) {
     return res.status(403).json({
       error: "ACCESS DENIED",

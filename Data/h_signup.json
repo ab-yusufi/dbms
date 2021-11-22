@@ -3,5 +3,6 @@
   "city": "Pune",
   "locality": "Akurdi",
   "state": "Maharshtra",
-  "email": "xyz@ab.com"
+  "email": "xyz@ab.com",
+  "phone": 1234567890
 }

@@ -1,0 +1,78 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap");
+body {
+  background-image: url("../../assets/background.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+#box {
+  font-family: monospace;
+  font-size: 27px;
+  font-weight: bolder;
+  color: white;
+  background-color: RGB(105, 105, 105);
+  /*border-color: yellow;
+    border-style: dashed;
+    border-width: 5px;*/
+  border-radius: 15px;
+  width: 400px;
+  padding: 20px;
+  margin: auto;
+  margin-top: 70px;
+  text-align: center;
+}
+
+#textalign {
+  text-align: center;
+}
+/*body{
+    background-color: 	RGB(192,192,192)
+}*/
+.register {
+  font-size: 20px;
+  color: white;
+  background-color: blue;
+  min-height: inherit;
+  width: 60px;
+  cursor: pointer;
+  padding: 20px;
+  margin: auto;
+  text-align: center;
+}
+.article {
+  width: 45%;
+  margin: auto;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  padding: 10px;
+  /*border-bottom: 5px;
+   
+    border-color: aqua;
+     border-style: dashed;
+    border-width: 5px;
+    background-color: azure;
+     
+     margin: auto;
+     margin-bottom: 59px;
+    text-align: center*/
+}
+.article-image {
+  width: 40%;
+  float: right;
+  position: relative;
+  margin-left: 10px;
+  top: -35px;
+}
+.heading {
+  color: #eb6734;
+}
+.sub-heading {
+  color: crimson;
+  font-family: cursive;
+}
+.para {
+  color: burlywood;
+}
+/* {
+    border: 1px solid blue
+}*/

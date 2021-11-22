@@ -15,14 +15,16 @@ app.use(express.json());
 
 //Routes
 const pAuthRoutes = require("./routes/p_auth");
+const patientRoutes = require("./routes/patient");
 const hAuthRoutes = require("./routes/h_auth");
 const serviceRoutes = require("./routes/service");
-// const patientRoutes = require("./routes/patient");
+const bookingRoutes = require("./routes/booking");
 
 app.use("/api/p", pAuthRoutes);
 app.use("/api/h", hAuthRoutes);
 app.use("/api", serviceRoutes);
-// app.use("/api", hospitalRoutes);
+app.use("/api", bookingRoutes);
+app.use("/api", patientRoutes);
 
 //DB Connection
 mongoose
