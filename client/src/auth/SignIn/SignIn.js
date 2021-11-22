@@ -2,17 +2,17 @@ import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import "./nicepage.css";
 import "./SignIn.css";
-const SignIn = ({history}) => {
+const SignIn = ({ history }) => {
   const [patient, setPatient] = useState({
-    email: "aaa@ab.com",
-    password: "12345678",
+    email: "",
+    password: "",
   });
-  // const [hospital, setHospital] = useState({
-  //   email: "aaa@ab.com",
-  //   password: "12345678",
-  // });
+  const [hospital, setHospital] = useState({
+    h_email: "",
+    h_password: "",
+  });
   const { email, password } = patient;
-  // const { email, password } = hospital;
+  const { h_email, h_password } = hospital;
   const p_signin = async () => {
     await fetch("/api/p/signin", {
       method: "POST",
@@ -26,13 +26,12 @@ const SignIn = ({history}) => {
         return res.json();
       })
       .then((data) => {
-        if(data.error){
-          console.log(data.error)
+        if (data.error) {
+          console.log(data.error);
         } else {
           localStorage.setItem("p-jwt", JSON.stringify(data));
           performRedirect();
         }
-        
       })
       .catch((err) => console.log(err));
     setPatient({
@@ -65,26 +64,23 @@ const SignIn = ({history}) => {
       password: "",
     });
     alert("Logged In Successfully. Welcome to the dashboard");
-    
   };
 
-  const performRedirect = ()=>{
-    if (localStorage.getItem("p-jwt")){
-      return <Redirect to="/patient/dashboard"/>
-    } else if(localStorage.getItem("h-jwt")){
-      return <Redirect to="/hospital/dashboard"/>
+  const performRedirect = () => {
+    if (localStorage.getItem("p-jwt")) {
+      return <Redirect to="/patient/dashboard" />;
+    } else if (localStorage.getItem("h-jwt")) {
+      return <Redirect to="/hospital/dashboard" />;
     }
-  }
+  };
 
   return (
-    
     <section
       className="u-align-center u-clearfix u-image u-shading u-section-1"
       data-image-width="2000"
       data-image-height="1333"
       id="sec-2136"
     >
-
       <div className="u-clearfix u-sheet u-sheet-1">
         <a
           href="#https://nicepage.com"
@@ -106,7 +102,6 @@ const SignIn = ({history}) => {
                       className="u-clearfix u-form-custom-backend u-form-spacing-30 u-form-vertical u-inner-form"
                       name="form-4"
                       style={{ padding: "0" }}
-                      
                     >
                       <div className="u-form-group u-form-name">
                         <label className="u-form-control-hidden u-label"></label>
@@ -115,7 +110,10 @@ const SignIn = ({history}) => {
                           placeholder="Enter your Email"
                           id="username-22e3"
                           className="u-border-1 u-border-white u-input u-input-rectangle u-radius-50 u-white"
-                          value={email}
+                          value={h_email}
+                          onChange={(e) => {
+                            setHospital({...hospital, h_email: e.target.value});
+                          }}
                         />
                       </div>
                       <div className="u-form-group u-form-password">
@@ -128,7 +126,10 @@ const SignIn = ({history}) => {
                           placeholder="Enter your Password"
                           id="password-22e3"
                           className="u-border-1 u-border-white u-input u-input-rectangle u-radius-50 u-white"
-                          value={password}
+                          value={h_password}
+                          onChange={(e) => {
+                            setHospital({...hospital, h_password: e.target.value});
+                          }}
                         />
                       </div>
                       <div className="u-form-checkbox u-form-group">
@@ -146,9 +147,9 @@ const SignIn = ({history}) => {
                         <button
                           href="#"
                           className="u-btn u-btn-round u-btn-submit u-button-style u-radius-50 u-btn-2"
-                          onClick={(e) =>{
+                          onClick={(e) => {
                             e.preventDefault();
-                            h_signin()
+                            h_signin();
                             history.push("/hospital/dashboard");
                           }}
                         >
@@ -227,8 +228,8 @@ const SignIn = ({history}) => {
                           href="#"
                           className="u-btn u-btn-round u-btn-submit u-button-style u-radius-50 u-btn-3"
                           onClick={(e) => {
-                            e.preventDefault()
-                            p_signin()
+                            e.preventDefault();
+                            p_signin();
                             history.push("/patient/dashboard");
                           }}
                         >
@@ -256,7 +257,6 @@ const SignIn = ({history}) => {
         </div>
       </div>
     </section>
-    
   );
 };
 

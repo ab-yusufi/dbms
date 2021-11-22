@@ -43,6 +43,17 @@ exports.getBooking = (req, res) => {
   return res.json(req.booking);
 };
 
+exports.getBookingssByPatient = async (req, res) => {
+   Booking.find({patient: req.patient}).exec((err, bookings) => {
+    if (err) {
+      return res.status(400).json({
+        error: "NO bookings found",
+      });
+    }
+    res.json(bookings);
+  })
+}
+
 exports.updateBooking = (req, res) => {
   Booking.findByIdAndUpdate(
     { _id: req.booking._id },

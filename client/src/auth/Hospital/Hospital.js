@@ -76,7 +76,7 @@ const Hospital = () => {
         <div id="box">Hospital Dashboard</div>
         <br />
         <br />
-        <div class="center">
+        <div className="center">
           <h4>Hospital Name : {hospital?.name}</h4>
           <h4>
             Location : {hospital?.locality} {hospital?.city} {hospital?.state}

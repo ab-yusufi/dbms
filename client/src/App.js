@@ -6,6 +6,7 @@ import Home from "./auth/Home";
 import Patient from "./auth/Patient/Patient";
 import Hospital from "./auth/Hospital/Hospital";
 import Service from "./Service/Service";
+import Booking from "./Booking/Booking";
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
         <Route exact path="/patient/dashboard" component={Patient} />
         <Route exact path="/hospital/dashboard" component={Hospital} />
         <Route exact path="/service/create" component={Service} />
-        {/* <Route exact path="/booking/create" component={SignIn} /> */}
+        <Route exact path="/booking/create" component={Booking} />
       </Switch>
     </Router>
   );

@@ -3,7 +3,8 @@ const router = express.Router();
 
 const {
   getHospitalById,
-  getHospital
+  getHospital,
+  getAllHospitals
 } = require("../controllers/hospital");
 const { isSignedIn, isAuthenticated } = require("../controllers/h_auth");
 // const { isSignedIn, isAuthenticated, isAdmin } = require("../controllers/auth");
@@ -11,6 +12,7 @@ const { isSignedIn, isAuthenticated } = require("../controllers/h_auth");
 router.param("hid", getHospitalById);
 
 router.get("/h/:hid", isSignedIn, isAuthenticated, getHospital);
+router.get("/hospitals",getAllHospitals);
 // router.put("/hospital/:hospitalId", isSignedIn, isAuthenticated, updatehospital);
 
 module.exports = router;
