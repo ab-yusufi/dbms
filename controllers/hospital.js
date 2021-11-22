@@ -11,3 +11,9 @@ exports.getHospitalById = async (req, res, next, id) => {
     next();
   });
 };
+
+exports.getHospital = async (req, res) => {
+  req.profile.salt = undefined;
+  req.profile.encry_password = undefined;
+  return await res.json(req.profile);
+};

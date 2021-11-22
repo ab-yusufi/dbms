@@ -4,6 +4,7 @@ import SignIn from "./auth/SignIn/SignIn";
 import HSignUp from "./auth/HSignUp/HSignUp";
 import Home from "./auth/Home";
 import Patient from "./auth/Patient/Patient";
+import Hospital from "./auth/Hospital/Hospital";
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
         <Route exact path="/h/signup" component={HSignUp} />
         <Route exact path="/signin" component={SignIn} />
         <Route exact path="/patient/dashboard" component={Patient} />
-        {/* <Route exact path="/hospital/dashboard" component={SignIn} /> */}
+        <Route exact path="/hospital/dashboard" component={Hospital} />
         {/* <Route exact path="/service/create" component={SignIn} /> */}
         {/* <Route exact path="/booking/create" component={SignIn} /> */}
       </Switch>

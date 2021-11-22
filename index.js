@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const path = require("path");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
@@ -17,6 +18,7 @@ app.use(express.json());
 const pAuthRoutes = require("./routes/p_auth");
 const patientRoutes = require("./routes/patient");
 const hAuthRoutes = require("./routes/h_auth");
+const hospitalRoutes = require("./routes/hospital");
 const serviceRoutes = require("./routes/service");
 const bookingRoutes = require("./routes/booking");
 
@@ -25,6 +27,7 @@ app.use("/api/h", hAuthRoutes);
 app.use("/api", serviceRoutes);
 app.use("/api", bookingRoutes);
 app.use("/api", patientRoutes);
+app.use("/api", hospitalRoutes);
 
 //DB Connection
 mongoose
@@ -34,6 +37,12 @@ mongoose
   })
   .then(() => {
     console.log("DB CONNECTED");
+  });
+
+  app.use(express.static(path.join(__dirname, "client/build")));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client/build", "index.html"));
   });
 
 const PORT = process.env.PORT || 5000;
