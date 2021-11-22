@@ -57,7 +57,7 @@ const Booking = ({history}) => {
   const createBooking = async () => {
       const {user, token} = JSON.parse(localStorage.getItem("p-jwt"))
       
-    await fetch(`/api/${patient}/${service}/b/create/`, {
+    await fetch(`/api/${patient}/${service}/b/create`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -68,6 +68,7 @@ const Booking = ({history}) => {
     .then(data => {
         if(data.error){
             console.log(data.error);
+            alert(data.error)
         } else {
             history.push("/patient/dashboard")
         }
@@ -86,7 +87,6 @@ const Booking = ({history}) => {
       data-image-height="1080"
     >
       <div className="u-clearfix u-sheet u-sheet-1">
-        {JSON.stringify(hospitals)}
         <div className="u-palette-3-base u-shape u-shape-rectangle u-shape-1"></div>
         <div className="u-container-style u-group u-radius-50 u-shape-round u-white u-group-1">
           <div className="u-container-layout u-container-layout-1">
@@ -107,7 +107,7 @@ const Booking = ({history}) => {
                     Hospital Name
                   </label>
                   <select
-                    classNameName="u-grey-5 u-input u-input-rectangle u-input-1"
+                    className="u-grey-5 u-input u-input-rectangle u-input-1"
                     onChange={(e) => {
                       getServicesByHospital(e.target.value);
                       setBooking({...booking, hospital: e.target.value})
@@ -124,7 +124,7 @@ const Booking = ({history}) => {
                   <label  className="u-label u-label-2">
                     Services
                   </label>
-                  <select classNameName="u-grey-5 u-input u-input-rectangle u-input-1" onChange={e => {
+                  <select className="u-grey-5 u-input u-input-rectangle u-input-1" onChange={e => {
                       setBooking({...booking, service: e.target.value})
                   }} >
                     {services.map((service, index) => (

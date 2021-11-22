@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from "react";
 import "./HSignUp.css";
 
-const HSignUp = () => {
+const HSignUp = ({history}) => {
   const [hospital, setHospital] = useState({
     name: "",
     email: "",
@@ -23,21 +23,32 @@ const HSignUp = () => {
       .then((res) => {
         console.log(res);
         return res.json();
+      }).then(data=>{
+        if(data.error){
+          alert(data.error) 
+        } else {
+          setHospital({
+            name: "",
+            email: "",
+            password: "",
+            city: "",
+            state: "",
+            locality: "",
+            phone: 0,
+          });
+          alert("Registered Successfully. Please Login to Proceed");
+          history.push("/signin")
+        }
       })
       .catch((err) => console.log(err));
-    setHospital({
-      name: "",
-      email: "",
-      password: "",
-      city: "",
-      state: "",
-      locality: "",
-      phone: 0,
-    });
-    alert("Registered Successfully. Please Login to Proceed");
+    
   };
   return (
     <Fragment>
+      <div id="box">Hospital Registration Form</div>
+      <hr />
+      <h3>Fill out the form carefully for the registration</h3>
+      <hr />
       <div className="textalign">
         <form>
           Name :{" "}

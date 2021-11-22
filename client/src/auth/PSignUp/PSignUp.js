@@ -1,6 +1,6 @@
 import React, { useState, Fragment } from "react";
 import "./PSignUp.css";
-const PSignUp = () => {
+const PSignUp = ({ history }) => {
   const [patient, setPatient] = useState({
     name: "",
     email: "",
@@ -25,7 +25,7 @@ const PSignUp = () => {
     bloodgroup,
   } = patient;
   const signup = async () => {
-    await fetch("http://localhost:5000/api/p/signup", {
+    return fetch("http://localhost:5000/api/p/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -36,19 +36,26 @@ const PSignUp = () => {
         console.log(res);
         return res.json();
       })
+      .then((data) => {
+        if (data.error) {
+          console.log("ERROR");
+        } else {
+          setPatient({
+            name: "",
+            email: "",
+            password: "",
+            city: "",
+            state: "",
+            locality: "",
+            dob: "",
+            phone: 0,
+            bloodgroup: "",
+          });
+          alert("Registered Successfully. Please Login to Proceed");
+          history.push("/signin");
+        }
+      })
       .catch((err) => console.log(err));
-    setPatient({
-      name: "",
-      email: "",
-      password: "",
-      city: "",
-      state: "",
-      locality: "",
-      dob: "",
-      phone: 0,
-      bloodgroup: "",
-    })
-    alert("Registered Successfully. Please Login to Proceed")
   };
   return (
     <Fragment>

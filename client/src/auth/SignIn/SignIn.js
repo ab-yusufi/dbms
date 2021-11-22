@@ -30,16 +30,16 @@ const SignIn = ({ history }) => {
           console.log(data.error);
         } else {
           localStorage.setItem("p-jwt", JSON.stringify(data));
-          performRedirect();
+          setPatient({
+            email: "",
+            password: "",
+          });
+          alert("Logged In Successfully. Welcome to the dashboard");
+
+          history.push("/patient/dashboard");
         }
       })
       .catch((err) => console.log(err));
-    setPatient({
-      email: "",
-      password: "",
-    });
-    alert("Logged In Successfully. Welcome to the dashboard");
-    return <Redirect to="/patient/dashboard" />;
   };
 
   const h_signin = async () => {
@@ -48,30 +48,27 @@ const SignIn = ({ history }) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(patient),
+      body: JSON.stringify({email: hospital.h_email, password: hospital.h_password}),
     })
       .then((res) => {
         console.log("PSIGNIN: ", res);
         return res.json();
       })
       .then((data) => {
-        localStorage.setItem("h-jwt", JSON.stringify(data));
-        performRedirect();
+        if(data.error){
+          alert(data.error)
+        } else {
+          localStorage.setItem("h-jwt", JSON.stringify(data));
+          setPatient({
+            email: "",
+            password: "",
+          });
+          alert("Logged In Successfully. Welcome to the dashboard");
+          history.push("/hospital/dashboard");
+        }
       })
       .catch((err) => console.log(err));
-    setPatient({
-      email: "",
-      password: "",
-    });
-    alert("Logged In Successfully. Welcome to the dashboard");
-  };
-
-  const performRedirect = () => {
-    if (localStorage.getItem("p-jwt")) {
-      return <Redirect to="/patient/dashboard" />;
-    } else if (localStorage.getItem("h-jwt")) {
-      return <Redirect to="/hospital/dashboard" />;
-    }
+    
   };
 
   return (
@@ -112,7 +109,10 @@ const SignIn = ({ history }) => {
                           className="u-border-1 u-border-white u-input u-input-rectangle u-radius-50 u-white"
                           value={h_email}
                           onChange={(e) => {
-                            setHospital({...hospital, h_email: e.target.value});
+                            setHospital({
+                              ...hospital,
+                              h_email: e.target.value,
+                            });
                           }}
                         />
                       </div>
@@ -128,7 +128,10 @@ const SignIn = ({ history }) => {
                           className="u-border-1 u-border-white u-input u-input-rectangle u-radius-50 u-white"
                           value={h_password}
                           onChange={(e) => {
-                            setHospital({...hospital, h_password: e.target.value});
+                            setHospital({
+                              ...hospital,
+                              h_password: e.target.value,
+                            });
                           }}
                         />
                       </div>
@@ -150,7 +153,7 @@ const SignIn = ({ history }) => {
                           onClick={(e) => {
                             e.preventDefault();
                             h_signin();
-                            history.push("/hospital/dashboard");
+                            
                           }}
                         >
                           Login as Hospital
@@ -230,7 +233,6 @@ const SignIn = ({ history }) => {
                           onClick={(e) => {
                             e.preventDefault();
                             p_signin();
-                            history.push("/patient/dashboard");
                           }}
                         >
                           Login as Patient

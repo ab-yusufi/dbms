@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import {Link} from 'react-router-dom'
 
 const Home = () => {
   return (
@@ -95,6 +96,13 @@ const Home = () => {
           <h1 className="u-text u-text-default u-text-1">
             Expertise,Service,Integrity.We got it...
           </h1>
+          <Link to="/p/signup">
+          <button>Register as Patient</button>
+          </Link>
+          <Link to="/h/signup">
+          <button>Register as Hospital</button>
+          </Link>
+
         </div>
       </section>
       <section className="u-clearfix u-section-2" id="sec-e89d">
