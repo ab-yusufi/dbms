@@ -25,7 +25,7 @@ const PSignUp = ({ history }) => {
     bloodgroup,
   } = patient;
   const signup = async () => {
-    return fetch("http://localhost:5000/api/p/signup", {
+    return fetch("/api/p/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

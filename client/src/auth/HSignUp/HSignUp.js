@@ -13,7 +13,7 @@ const HSignUp = ({ history }) => {
   });
   const { name, email, password, city, state, locality, dob, phone } = hospital;
   const signup = async () => {
-    await fetch("http://localhost:5000/api/h/signup", {
+    await fetch("/api/h/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
