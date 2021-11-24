@@ -31,7 +31,7 @@ app.use("/api", hospitalRoutes);
 
 //DB Connection
 mongoose
-  .connect("mongodb://localhost:27017/dbms", {
+  .connect(process.env.DATABASE, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
