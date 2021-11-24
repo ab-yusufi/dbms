@@ -58,29 +58,30 @@ const PSignUp = ({ history }) => {
       .catch((err) => console.log(err));
   };
   return (
-    <Fragment>
-      <div id="box">Patient Registration Form</div>
-      <hr />
-      <h3>Fill out the form carefully for the registration</h3>
-      <hr />
-      <div id="textalign">
-        <form>
-          Name :{" "}
+    <div className="body min-vh-100">
+      <div className="my-2">
+        <h2 className="text-center bg-primary text-white py-2">
+          Patient Registration
+        </h2>
+      </div>
+      <div className="w-100 d-flex flex-column justify-content-center align-items-center">
+        <form className="mb-2 w-50">
+          <label className="form-label">Name :</label>
           <input
             type="text"
-            placeholder="Enter Patient name"
+            className="form-control"
+            placeholder="Enter Patient Name"
             value={name}
             onChange={(e) => {
               setPatient({ ...patient, name: e.target.value });
             }}
           />
         </form>
-        <br />
-        <br />
-        <form>
-          Email :{" "}
+        <form className="mb-2 w-50">
+          <label className="form-label">Email :</label>
           <input
             type="text"
+            className="form-control"
             placeholder="Enter Email address"
             value={email}
             onChange={(e) => {
@@ -88,64 +89,65 @@ const PSignUp = ({ history }) => {
             }}
           />
         </form>
-        <br />
-        <br />
-        <form>
-          Password :{" "}
+        <form className="mb-2 w-50">
+          <label className="form-label">Password :</label>
           <input
             type="password"
+            className="form-control"
+            placeholder="Enter Password"
             value={password}
             onChange={(e) => {
               setPatient({ ...patient, password: e.target.value });
             }}
           />
         </form>
-        <br />
-        <br />
-        <form>
-          City :{" "}
+        <form className="mb-2 w-50">
+          <label className="form-label">City :</label>
           <input
             type="text"
+            className="form-control"
+            placeholder="Enter City"
             value={city}
             onChange={(e) => {
               setPatient({ ...patient, city: e.target.value });
             }}
           />
         </form>
-        <br />
-        <br />
-        <form>
-          State :{" "}
+        <form className="mb-2 w-50">
+          <label className="form-label">State :</label>
           <input
             type="text"
+            className="form-control"
+            placeholder="Enter State"
             value={state}
             onChange={(e) => {
               setPatient({ ...patient, state: e.target.value });
             }}
           />
         </form>
-        <br />
-        <br />
-        <form>
-          Locality :{" "}
+        <form className="mb-2 w-50">
+          <label className="form-label">Locality :</label>
           <input
             type="text"
+            className="form-control"
+            placeholder="Enter Locality"
             value={locality}
             onChange={(e) => {
               setPatient({ ...patient, locality: e.target.value });
             }}
           />
         </form>
-
-        <br />
-        <br />
-        <label>Bloodgroup:</label>
-        <input
-          value={bloodgroup}
-          onChange={(e) => {
-            setPatient({ ...patient, bloodgroup: e.target.value });
-          }}
-        />
+        <form className=" w-50">
+          <label className="form-label">Bloodgroup:</label>
+          <input
+            value={bloodgroup}
+            className="form-control"
+            placeholder="Enter Bloodgroup"
+            onChange={(e) => {
+              setPatient({ ...patient, bloodgroup: e.target.value });
+            }}
+          />
+        </form>
         {/* <select id="select Bloodgroup">
         <option value="A">A+</option>
         <option value="B">B+</option>
@@ -158,13 +160,12 @@ const PSignUp = ({ history }) => {
         <option value="Other">Other</option>
       </select> */}
 
-        <br />
-        <br />
-        <form>
-          <label>Date of Birth</label>
+        <form className="mb-2 w-50">
+          <label className="form-label">Date of Birth</label>
           <input
             type="date"
             id="birthday"
+            className="form-control"
             name="birthday"
             value={dob}
             onChange={(e) => {
@@ -173,24 +174,23 @@ const PSignUp = ({ history }) => {
           />
         </form>
 
-        <br />
-        <br />
-        <form>
-          Contact number:{" "}
+        <form className="mb-2 w-50">
+          <label className="form-label">Contact number:</label>
           <input
             type="text"
             placeholder="Number"
+            className="form-control"
             value={phone}
             onChange={(e) => {
               setPatient({ ...patient, phone: e.target.value });
             }}
           />
         </form>
-        <div className="register" onClick={signup}>
+        <button className="btn btn-primary btn-lg mb-5" onClick={signup}>
           Register
-        </div>
+        </button>
       </div>
-    </Fragment>
+    </div>
   );
 };
 

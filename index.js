@@ -31,13 +31,15 @@ app.use("/api", hospitalRoutes);
 
 //DB Connection
 mongoose
-  .connect(process.env.DATABASE, {
+  .connect("mongodb://localhost:27017/dbms", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
   .then(() => {
     console.log("DB CONNECTED");
   });
+
+  //Static Files
 
   app.use(express.static(path.join(__dirname, "client/build")));
 

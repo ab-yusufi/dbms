@@ -27,7 +27,7 @@ const SignIn = ({ history }) => {
       })
       .then((data) => {
         if (data.error) {
-          console.log(data.error);
+          alert(data.error);
         } else {
           localStorage.setItem("p-jwt", JSON.stringify(data));
           setPatient({

@@ -72,6 +72,7 @@ exports.updateBooking = (req, res) => {
 
 exports.deleteBooking = (req, res) => {
   const booking = req.booking;
+  console.log(booking);
   booking.remove((err, booking) => {
     if (err) {
       return res.status(400).json({

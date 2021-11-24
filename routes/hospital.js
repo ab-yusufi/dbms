@@ -11,7 +11,7 @@ const { isSignedIn, isAuthenticated } = require("../controllers/h_auth");
 
 router.param("hid", getHospitalById);
 
-router.get("/h/:hid", isSignedIn, isAuthenticated, getHospital);
+router.get("/h/:hid",getHospital);
 router.get("/hospitals",getAllHospitals);
 // router.put("/hospital/:hospitalId", isSignedIn, isAuthenticated, updatehospital);
 

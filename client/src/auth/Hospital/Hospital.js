@@ -72,77 +72,76 @@ const Hospital = () => {
   }, [refresh]);
   return (
     <Fragment>
-      <div id="body">
-        <div id="box">Hospital Dashboard</div>
-        <br />
-        <br />
-        <div className="center">
-          <h4>Hospital Name : {hospital?.name}</h4>
-          <h4>
-            Location : {hospital?.locality} {hospital?.city} {hospital?.state}
-          </h4>
-          <h4>Phone No. : {hospital?.phone}</h4>
-          <h4>Email :{hospital?.email}</h4>
+      <div className="min-vh-100">
+        <div className="my-2">
+          <h2 className="text-center bg-primary text-white py-2">
+            Hospital Dashboard
+          </h2>
         </div>
-        {/* <div id="pending">
-          <h4>
-            <div id="service">Pending Services</div>
-          </h4>
-          <div id="service">
-            <a>
-              01 Service name
-              <input
-                type="radio"
-                id="Pending"
-                name="fav_language"
-                value="Pending"
-              />
-            </a>{" "}
-            <label> Pending</label>{" "}
-            <input
-              type="radio"
-              id="Completed"
-              name="fav_language"
-              value="Pending"
-            />{" "}
-            <label for="Completed">Completed</label>{" "}
+        <div className="d-flex justify-content-center">
+          <div className="w-75 bg-white text-primary px-5 py-4">
+            <h4>
+              <span className="text-black">Hospital Name: </span>
+              {hospital?.name}{" "}
+            </h4>
+            <h4>
+              <span className="text-black"> Location: </span>{" "}
+              {hospital?.locality} {hospital?.city} {hospital?.state}
+            </h4>
+            <h4>
+              <span className="text-black">Phone No: </span> {hospital?.phone}
+            </h4>
+            <h4>
+              <span className="text-black">Email: </span>
+              {hospital?.email}
+            </h4>
           </div>
-          <a>
-            02 Service name{" "}
-            <input
-              type="radio"
-              id="student"
-              name="fa_language"
-              value="Pending"
-            />
-          </a>{" "}
-          <label> Pending</label>{" "}
-          <input type="radio" id="student" name="fa_language" value="Pending" />{" "}
-          <label for="Completed">Completed</label>
-          <br />
-        </div> */}
-        <div id="available">
-          <div id="sub-available">
-            <h3>Available Services</h3>
-            <Link to="/service/create">
-            <button>Add new</button>
-            </Link>
+        </div>
+        <div className="d-flex justify-content-center">
+          <div className="w-75 bg-white text-primary px-5 py-4 border-top border-primary">
+            <div className="d-flex justify-content-between align-items-center">
+              <h3 className="text-center">Available Services</h3>
+              <Link to="/service/create">
+                <button className="btn btn-primary">Add new</button>
+              </Link>
+            </div>
+            <table className="table">
+              <tr>
+                <th>Service Name</th>
+                <th>Price</th>
+                <th>Edit</th>
+                <th>Delete</th>
+              </tr>
+
+              {services.map((service) => (
+                <tr >
+                  <td>{service.name}</td>
+                  <td>{service.price}</td>
+                  <td>
+                    <Link
+                      to={{
+                        pathname: "/service/create",
+                        state: service,
+                      }}
+                    >
+                      <button className="btn btn-info">Edit</button>
+                    </Link>
+                  </td>
+                  <td>
+                    <button
+                      className="btn btn-danger text-white bg-danger"
+                      onClick={() => {
+                        deleteService(service._id);
+                      }}
+                    >
+                      Delete
+                    </button>
+                  </td>
+
+                </tr>
+              ))}
+            </table>
           </div>
-          <br />
-          {services.map((service) => (
-            <Fragment>
-              <a>
-                {service.name}
-                <Link to="/service/create">
-                  <button>Edit</button>
-                </Link>
-                <button onClick={() => {
-                  deleteService(service._id);
-                }}> Delete</button>
-              </a>
-              <br />
-            </Fragment>
-          ))}
         </div>
       </div>
     </Fragment>

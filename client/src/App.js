@@ -12,13 +12,14 @@ function App() {
   return (
     <Router>
       <Switch>
+        {/* render={(props) => <Service {...props}/>} */}
         <Route exact path="/" component={Home} />
         <Route exact path="/p/signup" component={PSignUp} />
         <Route exact path="/h/signup" component={HSignUp} />
         <Route exact path="/signin" component={SignIn} />
         <Route exact path="/patient/dashboard" component={Patient} />
         <Route exact path="/hospital/dashboard" component={Hospital} />
-        <Route exact path="/service/create" component={Service} />
+        <Route exact path="/service/create"  component={Service}/>
         <Route exact path="/booking/create" component={Booking} />
       </Switch>
     </Router>

@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from "react";
 import "./HSignUp.css";
 
-const HSignUp = ({history}) => {
+const HSignUp = ({ history }) => {
   const [hospital, setHospital] = useState({
     name: "",
     email: "",
@@ -23,9 +23,10 @@ const HSignUp = ({history}) => {
       .then((res) => {
         console.log(res);
         return res.json();
-      }).then(data=>{
-        if(data.error){
-          alert(data.error) 
+      })
+      .then((data) => {
+        if (data.error) {
+          alert(data.error);
         } else {
           setHospital({
             name: "",
@@ -37,78 +38,114 @@ const HSignUp = ({history}) => {
             phone: 0,
           });
           alert("Registered Successfully. Please Login to Proceed");
-          history.push("/signin")
+          history.push("/signin");
         }
       })
       .catch((err) => console.log(err));
-    
   };
   return (
     <Fragment>
-      <div id="box">Hospital Registration Form</div>
-      <hr />
-      <h3>Fill out the form carefully for the registration</h3>
-      <hr />
-      <div className="textalign">
-        <form>
+      <div className="my-2">
+        <h2 className="text-center bg-primary text-white py-2">
+          Hospital Registration
+        </h2>
+      </div>
+      <div className="w-100 d-flex flex-column justify-content-center align-items-center">
+        <form className="mb-3 w-50">
           Name :{" "}
-          <input type="text" placeholder="Enter hospital name" value={name} onChange={(e) => {
+          <input
+            className="form-control"
+            type="text"
+            placeholder="Enter Hospital Name"
+            value={name}
+            onChange={(e) => {
               setHospital({ ...hospital, name: e.target.value });
-            }} />
+            }}
+          />
         </form>
-        <br />
-        <br />
-        <form>
+        <form className="mb-3 w-50">
           Email :{" "}
-          <input type="text" placeholder="Enter Email address" value={email} onChange={(e) => {
+          <input
+            className="form-control"
+            type="text"
+            placeholder="Enter Email Address"
+            value={email}
+            onChange={(e) => {
               setHospital({ ...hospital, email: e.target.value });
-            }}  />
-        </form>
-        <br />
-        <br />
-        <form>
-          Password : <input type="password" value={password} onChange={(e) => {
-              setHospital({ ...hospital, password: e.target.value });
-            }}  />
-        </form>
-        <br />
-        <br />
-        <form>
-          City : <input type="text" value={city} onChange={(e) => {
-              setHospital({ ...hospital, city: e.target.value });
-            }} />
-        </form>
-        <br />
-        <br />
-        <form>
-          State : <input type="text" value={state} onChange={(e) => {
-              setHospital({ ...hospital, state: e.target.value });
-            }} />
-        </form>
-        <br />
-        <br />
-        <form>
-          Locality : <input type="text" value={locality} onChange={(e) => {
-              setHospital({ ...hospital, locality: e.target.value });
-            }} />
+            }}
+          />
         </form>
 
-        <br />
-        <br />
-        <form>
+        <form className="mb-3 w-50">
+          Password :{" "}
+          <input
+            className="form-control"
+            type="password"
+            placeholder="Enter Password"
+            value={password}
+            onChange={(e) => {
+              setHospital({ ...hospital, password: e.target.value });
+            }}
+          />
+        </form>
+
+        <form className="mb-3 w-50">
+          City :{" "}
+          <input
+            className="form-control"
+            type="text"
+            placeholder="Enter City"
+            value={city}
+            onChange={(e) => {
+              setHospital({ ...hospital, city: e.target.value });
+            }}
+          />
+        </form>
+
+        <form className="mb-3 w-50">
+          State :{" "}
+          <input
+            className="form-control"
+            type="text"
+            placeholder="Enter State"
+            value={state}
+            onChange={(e) => {
+              setHospital({ ...hospital, state: e.target.value });
+            }}
+          />
+        </form>
+
+        <form className="mb-3 w-50">
+          Locality :{" "}
+          <input
+            className="form-control"
+            type="text"
+            placeholder="Enter Locality"
+            value={locality}
+            onChange={(e) => {
+              setHospital({ ...hospital, locality: e.target.value });
+            }}
+          />
+        </form>
+
+        <form className="mb-3 w-50">
           Contact number:{" "}
-          <input type="text" placeholder="Number" value={phone} onChange={(e) => {
+          <input
+            className="form-control"
+            type="text"
+            placeholder="Enter Contact Number"
+            value={phone}
+            onChange={(e) => {
               setHospital({ ...hospital, phone: e.target.value });
-            }}/>
+            }}
+          />
         </form>
       </div>
-      <br />
-      <br />
-      <div className="register" onClick={signup}>
+            <div className="text-center">
+      <button className="btn btn-primary btn-lg" onClick={signup}>
         Register
+      </button>
       </div>
-      <br />
-      <br />
     </Fragment>
   );
 };
