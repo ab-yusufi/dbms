@@ -66,42 +66,9 @@ const Patient = () => {
       });
   };
 
-  const getHospitalById = async () => {
-    if(bookings[0]){
-      await fetch(`/api/h/${bookings[0].hospital}`, {
-        method: "GET"
-      }).then(res => res.json())
-      .then(data => {
-        if(data.error){
-          alert(data.error)
-        } else {
-         setHospital(data); 
-        }
-      })
-    }
-      
-  }
-
-  const getServiceById = async () => {
-    if(bookings[0]){
-      await fetch(`/api/service/${bookings[0].service}`, {
-        method: "GET"
-      }).then(res => res.json())
-      .then(data => {
-        if(data.error){
-          alert(data.error)
-        } else {
-         setService(data);  
-        }
-      })
-    }
-      
-  }
   useEffect(() => {
     getPatientById();
     getBookingsByPatient();
-    getServiceById();
-    getHospitalById()
   }, [refresh]);
   return (
     
@@ -151,17 +118,19 @@ const Patient = () => {
             </div>
             <table className="table">
               <tr>
-                <th>Service ID</th>
+                <th>Service Name</th>
+                <th>Service Price</th>
                 <th>Date</th>
-                <th>Hospital ID</th>
+                <th>Hospital Name</th>
                 <th>Delete</th>
               </tr>
 
               {bookings.map((booking) => (
                 <tr >
-                  <td>{booking?.service}</td>
+                  <td>{booking?.service?.name}</td>
+                  <td>{booking?.service?.price}</td>
                   <td>{booking?.date.substr(0,10)}</td>
-                  <td>{booking?.hospital}</td>
+                  <td>{booking?.hospital?.name}</td>
                   
                   <td>
                     <button

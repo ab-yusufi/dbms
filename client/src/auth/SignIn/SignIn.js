@@ -122,7 +122,7 @@ const SignIn = ({ history }) => {
                           className="u-form-control-hidden u-label"
                         ></label>
                         <input
-                          type="text"
+                          type="password"
                           placeholder="Enter your Password"
                           id="password-22e3"
                           className="u-border-1 u-border-white u-input u-input-rectangle u-radius-50 u-white"
@@ -202,7 +202,7 @@ const SignIn = ({ history }) => {
                           className="u-form-control-hidden u-label"
                         ></label>
                         <input
-                          type="text"
+                          type="password"
                           placeholder="Enter your Password"
                           id="password-22e3"
                           className="u-border-1 u-border-white u-input u-input-rectangle u-radius-50 u-white"

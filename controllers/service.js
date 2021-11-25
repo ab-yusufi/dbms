@@ -1,7 +1,7 @@
 const Service = require("../models/service");
 
 exports.getServiceById = (req, res, next, id) => {
-  Service.findById(id).exec((err, service) => {
+  Service.findById(id).populate("hospital").exec((err, service) => {
     if (err || !service) {
       return res.status(400).json({
         error: "No service was found in DB",

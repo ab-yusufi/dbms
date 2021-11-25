@@ -1,7 +1,7 @@
 const Booking = require("../models/booking");
 
 exports.getBookingById = (req, res, next, id) => {
-  Booking.findById(id).exec((err, booking) => {
+  Booking.findById(id).populate("service").populate("hospital").exec((err, booking) => {
     if (err || !booking) {
       return res.status(400).json({
         error: "No booking was found in DB",
@@ -44,7 +44,7 @@ exports.getBooking = (req, res) => {
 };
 
 exports.getBookingssByPatient = async (req, res) => {
-   Booking.find({patient: req.patient}).exec((err, bookings) => {
+   Booking.find({patient: req.patient}).populate("hospital").populate("service").exec((err, bookings) => {
     if (err) {
       return res.status(400).json({
         error: "NO bookings found",
